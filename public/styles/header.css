@@ -1,0 +1,11 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dcb02b;
+  background-image: url("https://www.transparenttextures.com/patterns/transparent-square-tiles.png");
+}
+

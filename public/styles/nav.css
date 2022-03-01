@@ -1,0 +1,27 @@
+nav {
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #fff;
+  padding: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Bungee', sans-serif;
+}
+
+#tweetPrompt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#tweetPrompt p {
+  margin-bottom: .25em;
+}
