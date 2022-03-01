@@ -7,14 +7,16 @@
   flex-direction: column;
 }
 
-.new-tweet textarea {
+.tweet-input {
   resize: none;
-  height: 40px;
+  height: 50px;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   background-color: #f4f1ec;
   border-bottom: 3px solid #545149;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .primary-btn {
@@ -23,9 +25,9 @@
   font-family: 'Bungee', sans-serif;
   font-size: .75em;
   padding-top: 5px;
+  padding-right: 15px;
   padding-bottom: 5px;
   padding-left: 15px;
-  padding-right: 15px;
   text-decoration: none;
   border: none;
 }
@@ -40,4 +42,8 @@
   font-family: 'Bungee', sans-serif;
   font-size: .75em;
   align-self: flex-start;
+}
+
+.negative {
+  color: #ff0000;
 }
