@@ -27,9 +27,7 @@ body {
 .container {
   width: 90%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  background-color: #f4f1ec;
 }
  
 .container p {
