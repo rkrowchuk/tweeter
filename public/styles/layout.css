@@ -24,7 +24,7 @@ body {
   align-items: center;
 }
 
-main {
+.container {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -32,9 +32,11 @@ main {
   background-color: #f4f1ec;
 }
  
-main p {
+.container p {
   text-align: center;
 }
+
+
 
 
 
