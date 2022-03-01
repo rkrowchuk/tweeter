@@ -5,6 +5,9 @@ $(document).ready(function() {
     if ($(this).val().length > 140) {
       $('.counter').addClass('negative');
     }
+    if ($(this).val().length < 140) {
+      $('.counter').removeClass('negative');
+    }
   });
 
 });
