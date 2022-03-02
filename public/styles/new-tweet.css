@@ -10,9 +10,7 @@
 .tweet-input {
   resize: none;
   height: 50px;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
+  border-style: hidden;
   background-color: #f4f1ec;
   border-bottom: 3px solid #545149;
   font-size: 18px;
@@ -24,10 +22,7 @@
   color: #fff;
   font-family: 'Bungee', sans-serif;
   font-size: .75em;
-  padding-top: 5px;
-  padding-right: 15px;
-  padding-bottom: 5px;
-  padding-left: 15px;
+  padding: 5px 15px 5px 15px;
   text-decoration: none;
   border: none;
 }
@@ -46,4 +41,87 @@
 
 .negative {
   color: #ff0000;
+}
+
+.tweet-container {
+  border: 3px solid #545149;
+  width: 70%;
+  margin: 50px 0;
+  padding: 15px;
+}
+
+.tweet-container:hover {
+  box-shadow: 5px 5px #c6cce3;
+}
+
+article.tweet p {
+  text-align: left;
+  margin-left: 10px;
+}
+
+article.tweet header {
+  background-color: #f4f1ec;
+  background-image: none;
+  top: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  height: 100%;
+  padding: 0;
+}
+
+#user {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+#user img {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  width: 50px;
+}
+
+#user h5 {
+  margin: 10px 0 0 10px;
+  font-weight: 300;
+  height: 100%;
+}
+
+#handle {
+  margin: 0;
+  height: 100%;
+  color: #bbb;
+}
+
+article.tweet footer {
+  border-top: 3px solid #545149; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+article.tweet footer p {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+article.tweet footer #icons {
+  color: #4056A1;
+  margin: 5px 5px 0 0;
+}
+
+article.tweet footer #icons i {
+  margin-right: 5px;
+}
+
+article.tweet footer #icons i:hover {
+  color: #dcb02b;
 }
