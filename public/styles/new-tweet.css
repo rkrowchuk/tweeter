@@ -44,13 +44,16 @@
 }
 
 .tweet-container {
-  border: 3px solid #545149;
   width: 70%;
   margin: 50px 0;
-  padding: 15px;
 }
 
-.tweet-container:hover {
+article.tweet {
+  border: 3px solid #545149;
+  padding: 15px;
+  margin-bottom: 50px;
+}
+article.tweet:hover {
   box-shadow: 5px 5px #c6cce3;
 }
 
@@ -103,7 +106,6 @@ article.tweet footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 0;
 }
 
 article.tweet footer p {
