@@ -7,13 +7,24 @@
   flex-direction: column;
 }
 
+#error-msg p {
+  color: #ff0000;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#error-msg i {
+  margin-right: 10px;
+}
+
 .tweet-input {
   resize: none;
   height: 50px;
   border-style: hidden;
   background-color: #f4f1ec;
   border-bottom: 3px solid #545149;
-  font-size: 18px;
+  font-size: 24px;
   margin-top: 10px;
 }
 

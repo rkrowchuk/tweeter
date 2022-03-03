@@ -50,9 +50,13 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <div id="error-msg">
+          <p><i class="fa-solid fa-triangle-exclamation">
+          </i>This is an error</p>
+        </div>
         <form method=POST action="/tweets/" Content-Type="application/x-www-form-urlencoded" class="tweet-form">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea class="tweet-input" name="text" id="tweet-text" placeholder="Tweet goes here"></textarea>
+          <!-- <label for="tweet-text">What are you humming about?</label> -->
+          <textarea class="tweet-input" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="bottom-row">
             <button type="submit" class="submit-btn">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
