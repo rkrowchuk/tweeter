@@ -6,31 +6,24 @@
 
 $(document).ready(function() {
 
-  const $submit = $('.tweet-form');
-    
-  $submit.submit(function(event) {
-    event.preventDefault();
-    console.log('Button clicked, performing ajax call...');
-    const $input = this.text.value;
-    if ($input === "") {
-      alert("Error: your tweet is too short");
-    } else if ($input.length > 140) {
-      alert("Error: your tweet is too long");
-    } else {
-      const $tweetInput = $(this).serialize();
-      $.ajax({
-        url: '/tweets/', 
-        method: 'POST',
-        data: $tweetInput 
-      })
-      .then(function(){
-        location.reload();
-      })
-      .catch(function(error){
-        alert(`Your tweet didn't work`);
-      });
-    }
-  });
+  const $container = $('.tweet-container');
+
+  const loadTweets = function() {
+    $.ajax({
+      dataType: "json", 
+      url: '/tweets/',
+      method: 'GET', 
+    })
+    .then(function(data){
+      $container.empty();
+      renderTweets(data);
+    })
+    .catch(function(error){
+      console.log(`Error: ${error}`);
+    })
+  };
+
+  loadTweets();
 
   const createTweetElement = function(data) {
 
@@ -57,26 +50,41 @@ $(document).ready(function() {
   }
 
   const renderTweets = function(tweets) {
-    for (let i = tweets.length - 1; i >= 0; i--) {
-      let $newTweet = createTweetElement(tweets[i]);
-      $('.tweet-container').append($newTweet);
+    for (let tweet of tweets) {
+      let $newTweet = createTweetElement(tweet);
+      $container.prepend($newTweet);
     }
+    // for (let i = tweets.length - 1; i >= 0; i--) {
+    //   let $newTweet = createTweetElement(tweets[i]);
+    //   $('.tweet-container').append($newTweet);
+    // }
   }
 
-  const loadTweets = function() {
-    $.ajax({
-      dataType: "json", 
-      url: '/tweets/',
-      method: 'GET', 
-    })
-    .then(function(data){
-      renderTweets(data);
-    })
-    .catch(function(error){
-      console.log(`Error: ${error}`);
-    })
-  };
-
-  loadTweets();
+  const $submit = $('.tweet-form');
+    
+  $submit.on('submit', function(event) {
+    event.preventDefault();
+    $('.tweet-text').text();
+    console.log('Button clicked, performing ajax call...');
+    const $tweetInput = $(this).serialize();
+    const $input = this.text.value; 
+    if ($input === "") {
+      alert("Error: your tweet is too short");
+    } else if ($input.length > 140) {
+      alert("Error: your tweet is too long");
+    } else {
+      $.ajax({
+        url: '/tweets/', 
+        method: 'POST',
+        data: $tweetInput 
+      })
+      .then(function(){
+        loadTweets();
+      })
+      .catch(function(error){
+        alert(`Your tweet didn't work`);
+      });
+    }
+  });
 
 });
