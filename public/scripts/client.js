@@ -24,8 +24,7 @@ $(document).ready(function() {
         data: $tweetInput 
       })
       .then(function(){
-        console.log();
-          loadTweets(); 
+        location.reload();
       })
       .catch(function(error){
         alert(`Your tweet didn't work`);
@@ -58,8 +57,8 @@ $(document).ready(function() {
   }
 
   const renderTweets = function(tweets) {
-    for (let tweet of tweets) {
-      let $newTweet = createTweetElement(tweet);
+    for (let i = tweets.length - 1; i >= 0; i--) {
+      let $newTweet = createTweetElement(tweets[i]);
       $('.tweet-container').append($newTweet);
     }
   }
