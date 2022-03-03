@@ -38,6 +38,10 @@
   border: none;
 }
 
+.submit-btn:hover {
+  background-color:#dcb02b;
+}
+
 .bottom-row {
   display: flex;
   justify-content: space-between;

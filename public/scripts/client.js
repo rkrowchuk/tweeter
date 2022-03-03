@@ -60,6 +60,10 @@ $(document).ready(function() {
     // }
   }
 
+  $('#compose').on('click', function() {
+    $( "#tweet-text" ).focus();
+  });
+  
   const $submit = $('.tweet-form');
     
   $submit.on('submit', function(event) {
@@ -69,9 +73,17 @@ $(document).ready(function() {
     const $tweetInput = $(this).serialize();
     const $input = this.text.value; 
     if ($input === "") {
-      alert("Error: your tweet is too short");
+      $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
+      </i>Your tweet is too short!</p>`);
+      $('.tweet-input').focus(function() {
+        $('#error-msg').fadeOut();
+      });
     } else if ($input.length > 140) {
-      alert("Error: your tweet is too long");
+      $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
+      </i>Your tweet is too long!</p>`);
+      $('.tweet-input').focus(function() {
+        $('#error-msg').fadeOut();
+      });
     } else {
       $.ajax({
         url: '/tweets/', 
@@ -79,10 +91,16 @@ $(document).ready(function() {
         data: $tweetInput 
       })
       .then(function(){
+        $('.tweet-input').val('');
+        $('.counter').val('140');
         loadTweets();
       })
       .catch(function(error){
-        alert(`Your tweet didn't work`);
+        $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
+      </i>${error}Your tweet didn't work</p>`);
+      $('.tweet-input').focus(function() {
+        $('#error-msg').fadeOut();
+      });
       });
     }
   });

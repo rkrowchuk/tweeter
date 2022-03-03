@@ -1,7 +1,7 @@
 nav {
   height: 120px;
   width: 100%;
-  padding: 1.5em;
+  padding: 50px;
   position: fixed;
   top: 0;
   display: flex;
@@ -18,10 +18,13 @@ nav {
 
 #tweetPrompt {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+#tweetPrompt a {
+  text-decoration: none;
   color: #ff0000;
+  text-align: center;
 }
 
 #tweetPrompt p {
