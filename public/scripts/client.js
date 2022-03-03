@@ -11,18 +11,26 @@ $(document).ready(function() {
   $submit.submit(function(event) {
     event.preventDefault();
     console.log('Button clicked, performing ajax call...');
-    const $tweetInput = $(this).serialize();
-    $.ajax({
-      url: '/tweets/', 
-      method: 'POST',
-      data: $tweetInput 
-    })
-    .then(function(data){
-      console.log(this.data);
-    })
-    .catch(function(error){
-      console.log(`Error: ${error}`);
-    });
+    const $input = this.text.value;
+    if ($input === "") {
+      alert("Error: your tweet is too short");
+    } else if ($input.length > 140) {
+      alert("Error: your tweet is too long");
+    } else {
+      const $tweetInput = $(this).serialize();
+      $.ajax({
+        url: '/tweets/', 
+        method: 'POST',
+        data: $tweetInput 
+      })
+      .then(function(){
+        console.log();
+          loadTweets(); 
+      })
+      .catch(function(error){
+        alert(`Your tweet didn't work`);
+      });
+    }
   });
 
   const createTweetElement = function(data) {
@@ -67,8 +75,9 @@ $(document).ready(function() {
     })
     .catch(function(error){
       console.log(`Error: ${error}`);
-    });
-  }
+    })
+  };
+
   loadTweets();
 
 });
