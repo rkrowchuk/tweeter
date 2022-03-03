@@ -1,13 +1,29 @@
-header {
+.main-header {
   height: 400px;
   width: 100%;
   display: flex;
   position: relative;
-  top: 120px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   background-color: #dcb02b;
   background-image: url("https://www.transparenttextures.com/patterns/transparent-square-tiles.png");
+}
+
+.main-header h2 {
+  font-weight: 300;
+  color: #fff;
+  margin-top: 5px;
+}
+.main-header h2 strong{
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 1024px) {
+  .main-header {
+    width: 40%;
+    top: 120px;
+    margin: 50px 20px 50px 50px;
+  }
 }
 

@@ -1,8 +1,6 @@
 nav {
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
-  color: #fff;
   padding: 1.5em;
   position: fixed;
   top: 0;
@@ -15,6 +13,7 @@ nav {
   display: flex;
   align-items: center;
   font-family: 'Bungee', sans-serif;
+  color: #fff;
 }
 
 #tweetPrompt {
@@ -22,8 +21,18 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #ff0000;
 }
 
 #tweetPrompt p {
   margin-bottom: .25em;
+  color: #fff;
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056A1;
+  }
 }
