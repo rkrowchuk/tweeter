@@ -1,29 +1,26 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function() {
 
   const $container = $('.tweet-container');
   const $submit = $('.tweet-form');
   const $scrollBtn = $('#scroll-to-top');
+  const $tweetForm = $('.new-tweet');
+  const $textArea = $("#tweet-text");
+  const $errorMsg = $('#error-msg');
 
-// Loads all rendered tweets
+  // Loads all rendered tweets
   const loadTweets = function() {
     $.ajax({
-      dataType: "json", 
+      dataType: "json",
       url: '/tweets/',
-      method: 'GET', 
+      method: 'GET',
     })
-    .then(function(data){
-      $container.empty();
-      renderTweets(data);
-    })
-    .catch(function(error){
-      console.log(`Error: ${error}`);
-    })
+      .then(function(data) {
+        $container.empty();
+        renderTweets(data);
+      })
+      .catch(function(error) {
+        console.log(`Error: ${error}`);
+      });
   };
 
   loadTweets();
@@ -32,26 +29,26 @@ $(document).ready(function() {
   const createTweetElement = function(data) {
 
     let $tweet = $(
-    `<article class="tweet">
-    <header>
-        <div id="user">
-          <img src=${data["user"]["avatars"]}/>
-          <h5>${data["user"]["name"]}</h5>
-        </div>
-        <h5 id="handle">${data["user"]["handle"]}</h5>
-      </header>
-    <p>${data["content"]["text"]}</p>
-    <footer>
-        <p>${timeago.format(data["created_at"])}</p>
-        <div id="icons">
-          <i class="fa-solid fa-flag fa-2xs"></i>
-          <i class="fa-solid fa-retweet fa-2xs"></i>
-          <i class="fa-solid fa-heart fa-2xs"></i>
-        </div>
-      </footer>
-    </article>`);
+      `<article class="tweet">
+        <header>
+            <div id="user">
+              <img src=${data["user"]["avatars"]}/>
+              <h5>${data["user"]["name"]}</h5>
+            </div>
+            <h5 id="handle">${data["user"]["handle"]}</h5>
+          </header>
+        <p>${data["content"]["text"]}</p>
+        <footer>
+            <p>${timeago.format(data["created_at"])}</p>
+            <div id="icons">
+              <i class="fa-solid fa-flag fa-2xs"></i>
+              <i class="fa-solid fa-retweet fa-2xs"></i>
+              <i class="fa-solid fa-heart fa-2xs"></i>
+            </div>
+          </footer>
+        </article>`);
     return $tweet;
-  }
+  };
 
   // renders the database of tweets
   const renderTweets = function(tweets) {
@@ -59,15 +56,15 @@ $(document).ready(function() {
       const $newTweet = createTweetElement(tweet);
       $container.prepend($newTweet);
     }
-  }
+  };
 
-  // gives focus to compose form when compose button is clicked
+  // gives focus/visibility of tweet form when compose button is clicked
   $('#compose').on('click', function() {
-    if ($('.new-tweet').is(':visible')) {
-      $('.new-tweet').slideUp();
+    if ($tweetForm.is(':visible')) {
+      $tweetForm.slideUp();
     } else {
-      $('.new-tweet').slideDown();
-      $( "#tweet-text" ).focus();
+      $tweetForm.slideDown();
+      $textArea.focus();
     }
   });
 
@@ -75,49 +72,49 @@ $(document).ready(function() {
   $scrollBtn.on('click', function() {
     document.documentElement.scrollTop = 0;
     $scrollBtn.fadeOut(1000);
-  }) 
+  });
   
   $(window).on('scroll', function() {
-    $scrollBtn.css( "display", "inline");
+    $scrollBtn.css("display", "inline");
   });
  
-  // post request for new tweet 
+  // post request for new tweet
   $submit.on('submit', function(event) {
     event.preventDefault();
-    $('.tweet-text').text();
+    $textArea.text();
     console.log('Button clicked, performing ajax call...');
     const $tweetInput = $(this).serialize();
-    const $input = this.text.value; 
+    const $input = this.text.value;
     if ($input === "") {
-      $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
+      $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
       </i>Your tweet is too short!</p>`);
-      $('.tweet-input').focus(function() {
-        $('#error-msg').fadeOut();
+      $textArea.focus(function() {
+        $errorMsg.fadeOut();
       });
     } else if ($input.length > 140) {
-      $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
+      $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
       </i>Your tweet is too long!</p>`);
-      $('.tweet-input').focus(function() {
-        $('#error-msg').fadeOut();
+      $textArea.focus(function() {
+        $errorMsg.fadeOut();
       });
     } else {
       $.ajax({
-        url: '/tweets/', 
+        url: '/tweets/',
         method: 'POST',
-        data: $tweetInput 
+        data: $tweetInput
       })
-      .then(function(){
-        $('.tweet-input').val('');
-        $('.counter').val('140');
-        loadTweets();
-      })
-      .catch(function(error){
-        $('#error-msg').append(`<p><i class="fa-solid fa-triangle-exclamation">
-      </i>${error}Your tweet didn't work</p>`);
-      $('.tweet-input').focus(function() {
-        $('#error-msg').fadeOut();
-      });
-      });
+        .then(function() {
+          $textArea.val('');
+          $('.counter').val('140');
+          loadTweets();
+        })
+        .catch(function(error) {
+          $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
+          </i>${error}Your tweet didn't work</p>`);
+          $textArea.focus(function() {
+            $errorMsg.fadeOut();
+          });
+        });
     }
   });
 
