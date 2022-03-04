@@ -5,9 +5,9 @@ Tweeter is a simple, single-page Twitter clone.
 This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
 
 ## Final Product
-!["Desktop view with compose tweet form visible above populated tweets"] (https://github.com/rkrowchuk/tweeter/blob/master/docs/Desktop_composeTweet.png?raw=true)
+!["Desktop view with compose tweet form visible above populated tweets"] (https://github.com/rkrowchuk/tweeter/blob/master/docs/Desktop_composeTweet.png)
 
-!["Mobile view with compose tweet form hidden showing only populated tweets"] (https://github.com/rkrowchuk/tweeter/blob/master/docs/Mobile_composeHidden.png?raw=true)
+!["Mobile view with compose tweet form hidden showing only populated tweets"] (https://github.com/rkrowchuk/tweeter/blob/master/docs/Mobile_composeHidden.png)
 
 
 ## Getting Started
