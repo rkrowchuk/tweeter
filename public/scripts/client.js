@@ -60,12 +60,8 @@ $(document).ready(function() {
 
   // gives focus/visibility of tweet form when compose button is clicked
   $('#compose').on('click', function() {
-    if ($tweetForm.is(':visible')) {
-      $tweetForm.slideUp();
-    } else {
-      $tweetForm.slideDown();
-      $textArea.focus();
-    }
+    $tweetForm.is(':visible') ? $tweetForm.slideUp() : $tweetForm.slideDown(); 
+    $textArea.focus();
   });
 
   // scrolls page to top
