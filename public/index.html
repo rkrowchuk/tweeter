@@ -52,9 +52,11 @@
       <section class="new-tweet">
         <h2 id="compose">Compose Tweet</h2>
         <div id="error-msg">
+          <p><i class="fa-solid fa-triangle-exclamation">
+          </i>Your tweet must be between 1 and 140 characters</p>
         </div>
         <form method=POST action="/tweets/" Content-Type="application/x-www-form-urlencoded" class="tweet-form">
-          <textarea class="tweet-input" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <textarea class="tweet-input" name="text" id="tweet-text" placeholder="What are you humming about?" ></textarea>
           <div class="bottom-row">
             <button type="submit" class="submit-btn">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
