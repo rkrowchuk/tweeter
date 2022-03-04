@@ -31,8 +31,6 @@
 .submit-btn {
   background-color: #4056A1;
   color: #fff;
-  font-family: 'Bungee', sans-serif;
-  font-size: .75em;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
   border: none;
@@ -45,12 +43,12 @@
 .bottom-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 18px;
+  font-size: 16px;
+  font-family: 'Bungee', sans-serif;
 }
 
 .counter {
-  font-family: 'Bungee', sans-serif;
-  font-size: .75em;
   align-self: flex-start;
 }
 
@@ -68,6 +66,7 @@ article.tweet {
   padding: 15px;
   margin-bottom: 50px;
 }
+
 article.tweet:hover {
   box-shadow: 5px 5px #c6cce3;
 }
@@ -100,19 +99,16 @@ article.tweet header {
 #user img {
   margin: 0;
   display: flex;
-  height: 100%;
   width: 50px;
 }
 
 #user h5 {
   margin: 10px 0 0 10px;
   font-weight: 300;
-  height: 100%;
 }
 
 #handle {
   margin: 0;
-  height: 100%;
   color: #bbb;
 }
 
@@ -126,8 +122,7 @@ article.tweet footer {
 article.tweet footer p {
   font-weight: 600;
   font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin: 10px 0 0 0;
 }
 
 article.tweet footer #icons {
