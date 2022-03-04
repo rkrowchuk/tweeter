@@ -1,5 +1,5 @@
 .new-tweet {
-  width: 70%;
+  width: 80%;
 }
 
 .tweet-form {
@@ -39,7 +39,7 @@
 }
 
 .submit-btn:hover {
-  background-color:#dcb02b;
+  color:#dcb02b;
 }
 
 .bottom-row {
@@ -59,7 +59,7 @@
 }
 
 .tweet-container {
-  width: 70%;
+  width: 80%;
   margin: 50px 0;
 }
 

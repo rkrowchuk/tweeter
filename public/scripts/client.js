@@ -7,7 +7,10 @@
 $(document).ready(function() {
 
   const $container = $('.tweet-container');
+  const $submit = $('.tweet-form');
+  const $scrollBtn = $('#scroll-to-top');
 
+// Loads all rendered tweets
   const loadTweets = function() {
     $.ajax({
       dataType: "json", 
@@ -25,6 +28,7 @@ $(document).ready(function() {
 
   loadTweets();
 
+  // creates the layout of an indiviual tweet
   const createTweetElement = function(data) {
 
     let $tweet = $(
@@ -49,23 +53,30 @@ $(document).ready(function() {
     return $tweet;
   }
 
+  // renders the database of tweets
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
-      let $newTweet = createTweetElement(tweet);
+      const $newTweet = createTweetElement(tweet);
       $container.prepend($newTweet);
     }
-    // for (let i = tweets.length - 1; i >= 0; i--) {
-    //   let $newTweet = createTweetElement(tweets[i]);
-    //   $('.tweet-container').append($newTweet);
-    // }
   }
 
+  // gives focus to compose form when compose button is clicked
   $('#compose').on('click', function() {
     $( "#tweet-text" ).focus();
   });
+
+  // scrolls page to top
+  $scrollBtn.on('click', function() {
+    document.documentElement.scrollTop = 0;
+    $scrollBtn.fadeOut(1000);
+  }) 
   
-  const $submit = $('.tweet-form');
-    
+ $(window).on('scroll', function() {
+  $scrollBtn.css( "display", "inline");
+  });
+ 
+  // post request for new tweet 
   $submit.on('submit', function(event) {
     event.preventDefault();
     $('.tweet-text').text();
