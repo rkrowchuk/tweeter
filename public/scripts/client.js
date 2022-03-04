@@ -63,7 +63,12 @@ $(document).ready(function() {
 
   // gives focus to compose form when compose button is clicked
   $('#compose').on('click', function() {
-    $( "#tweet-text" ).focus();
+    if ($('.new-tweet').is(':visible')) {
+      $('.new-tweet').slideUp();
+    } else {
+      $('.new-tweet').slideDown();
+      $( "#tweet-text" ).focus();
+    }
   });
 
   // scrolls page to top
@@ -72,8 +77,8 @@ $(document).ready(function() {
     $scrollBtn.fadeOut(1000);
   }) 
   
- $(window).on('scroll', function() {
-  $scrollBtn.css( "display", "inline");
+  $(window).on('scroll', function() {
+    $scrollBtn.css( "display", "inline");
   });
  
   // post request for new tweet 
