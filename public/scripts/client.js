@@ -81,17 +81,10 @@ $(document).ready(function() {
     console.log('Button clicked, performing ajax call...');
     const $tweetInput = $(this).serialize();
     const $input = this.text.value;
-    if ($input === "") {
-      $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
-      </i>Your tweet is too short!</p>`);
+    if ($input === "" || $input.length > 140) {
+      $errorMsg.slideDown();
       $textArea.focus(function() {
-        $errorMsg.fadeOut();
-      });
-    } else if ($input.length > 140) {
-      $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
-      </i>Your tweet is too long!</p>`);
-      $textArea.focus(function() {
-        $errorMsg.fadeOut();
+        $errorMsg.slideUp();
       });
     } else {
       $.ajax({
@@ -105,10 +98,9 @@ $(document).ready(function() {
           loadTweets();
         })
         .catch(function(error) {
-          $errorMsg.append(`<p><i class="fa-solid fa-triangle-exclamation">
-          </i>${error}Your tweet didn't work</p>`);
+          $errorMsg.slideDown();
           $textArea.focus(function() {
-            $errorMsg.fadeOut();
+            $errorMsg.slideUp();
           });
         });
     }
